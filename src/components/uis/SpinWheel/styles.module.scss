@@ -1,0 +1,110 @@
+.SpinWheel {
+  position: relative;
+  margin: 1rem;
+  max-width: 600px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 3px 6px #3b404533;
+  padding: 1rem;
+  border-radius: 5px;
+
+  .wrapperWheel {
+    width: fit-content;
+    padding: 15px;
+
+    // background-color: #ccc;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .spin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      background-color: #e2e2e2;
+      border: 8px solid #fff;
+      color: #a2a2a2;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      color: red;
+      z-index: 8;
+      height: 50px;
+      width: 3px;
+      background-color: red;
+    }
+
+    .wheel {
+      border: 15px solid #dde;
+      background-color: #ccc;
+      position: relative;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      transition: 5s;
+
+      .segment {
+        height: 50%;
+        width: 50%;
+        position: absolute;
+        clip-path: polygon(0 0, 60% 0, 100% 100%, 0 60%);
+        transform-origin: bottom right;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        color: white;
+        cursor: pointer;
+        user-select: none;
+        margin-bottom: 0;
+
+        @for $i from 1 through 255 {
+          &:nth-child(#{$i}) {
+            background-color: rgb(
+              random(255 + $i),
+              random(255 + $i),
+              random(255 + $i)
+            );
+          }
+        }
+
+        .itemContain {
+          transform: rotate(315deg);
+        }
+      }
+    }
+  }
+
+  .groupAction {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    .btn {
+      background-color: lightseagreen;
+      border-radius: 5px;
+      padding: 10px 15px;
+      border: none;
+    }
+  }
+}
